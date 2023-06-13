@@ -1,5 +1,5 @@
 node{
- def mavenHome =  tool name: "Maven-3.6.1"
+ def mavenHome =  tool name: "Maven"
     stage("Git CheckOut"){
         git url: 'https://github.com/sobengdarko/spring-boot-docker',branch: 'master'
     }
