@@ -21,9 +21,9 @@ spec:
         env:
         - name: MONGO_DB_HOSTNAME
           value: mongo
-        - name: MONGO_INITDB_ROOT_USERNAME
+        - name: MONGO_DB_USERNAME
           value: springapp
-        - name: MONGO_INITDB_ROOT_PASSWORD
+        - name: MONGO_DB_PASSWORD
           value: mongodb@123      
 ---
 # Node Port Service For SpringApp
