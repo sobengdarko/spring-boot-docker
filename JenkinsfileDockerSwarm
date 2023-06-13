@@ -14,24 +14,23 @@ node{
         sh "${mavenHome}/bin/mvn deploy"
 	} 
     stage("Build Dokcer Image") {
-         sh "docker build -t sobeng/springboot .
+         sh "docker build -t sobeng/springboot ."
     }
     
     stage("Docker Push"){
         withCredentials([string(credentialsId: 'Docker_Hub_Pwd', variable: 'Docker_Hub_Pwd')]) {
           sh "docker login -u sobeng -p ${Docker_Hub_Pwd}"
-        }
+       } 
         sh "docker push sobeng/springboot:latest "
         
     }
     
     // Remove local image in Jenkins Server
     stage("Remove Local Image"){
-        sh "docker rmi -f sobeng/springboot:latest"
+        sh "docker rmi sobeng/springboot:latest"
     }
     
     stage("Deploy to kubernetes"){
-        sh kubectl apply -f jamiekeynes.yml
+        sh "kubectl apply -f jamiekeynes.yml"
         }
-    }
 }
